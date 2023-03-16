@@ -1,4 +1,4 @@
-package com.danielsaldivar.app;
+package <%= groupId %>.app;
 
 
 import org.junit.jupiter.api.Test;

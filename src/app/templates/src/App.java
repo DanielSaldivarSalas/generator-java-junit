@@ -1,4 +1,4 @@
-package com.danielsaldivar.app;
+package <%= groupId %>.app;
 
 public class App 
 {

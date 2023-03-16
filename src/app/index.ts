@@ -51,34 +51,33 @@ export default class extends BaseGenerator {
 
     const directoryGroupId = this.answers.groupId.split(".").join("/")
 
-    const projectName: String = this.answers.projectName;
     const files: FileSystemEntity[] = [
       { currentName: "_gitignore", newName: ".gitignore" },
 
-      { currentName: "src/App.java", newName: `src/main/java/${directoryGroupId}/app/App.java` },
-      { currentName: "src/AppTest.java", newName: `src/test/java/${directoryGroupId}app/AppTest.java` },
+      { currentName: "src/App.java", newName: `src/main/java/${directoryGroupId}/App.java` },
+      { currentName: "src/AppTest.java", newName: `src/test/java/${directoryGroupId}/AppTest.java` },
     ];
 
     files.forEach(el => {
       if (el.newName) {
-        this.copyFileSystemEntity(el.currentName, `${projectName}/${el.newName}`);
+        this.copyFileSystemEntity(el.currentName, `${this.answers.projectName}/${el.newName}`);
       } else {
-        this.copyFileSystemEntity(el.currentName, `${projectName}/${el.currentName}`);
+        this.copyFileSystemEntity(el.currentName, `${this.answers.projectName}/${el.currentName}`);
       }
     });
     const templates: TemplateEntity[] = [
       {
         currentName: "pom.xml",
-        newName: `${projectName}/pom.xml`,
+        newName: `${this.answers.projectName}/pom.xml`,
         data: {
           groupId: this.answers.groupId,
-          projectName: projectName
+          projectName: this.answers.projectName
         }
       }
     ];
 
     templates.forEach(el => {
-      this.useTemplate(el.currentName, `${this.answers.projectName} / ${el.newName}`, el.data);
+      this.useTemplate(el.currentName, `${this.answers.projectName}/${el.newName}`, el.data);
     });
   }
 }
