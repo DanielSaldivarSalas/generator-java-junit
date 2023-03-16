@@ -54,8 +54,6 @@ export default class extends BaseGenerator {
     const files: FileSystemEntity[] = [
       { currentName: "_gitignore", newName: ".gitignore" },
 
-      { currentName: "src/App.java", newName: `src/main/java/${directoryGroupId}/App.java` },
-      { currentName: "src/AppTest.java", newName: `src/test/java/${directoryGroupId}/AppTest.java` },
     ];
 
     files.forEach(el => {
@@ -73,7 +71,21 @@ export default class extends BaseGenerator {
           groupId: this.answers.groupId,
           projectName: this.answers.projectName
         }
-      }
+      },
+      {
+        currentName: "src/App.java",
+        newName: `src/main/java/${directoryGroupId}/App.java`,
+        data: {
+          groupId: this.answers.groupId
+        }
+      },
+      {
+        currentName: "src/AppTest.java",
+        newName: `src/test/java/${directoryGroupId}/AppTest.java`,
+        data: {
+          groupId: this.answers.groupId
+        }
+      },
     ];
 
     templates.forEach(el => {
