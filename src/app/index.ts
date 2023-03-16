@@ -56,7 +56,7 @@ export default class extends BaseGenerator {
       { currentName: "_gitignore", newName: ".gitignore" },
 
       { currentName: "src/App.java", newName: `src/main/java/${directoryGroupId}/app/App.java` },
-      { curretName: "src/AppTest.java", newName: `src/test/java/${directoryGroupId}app/AppTest.java` },
+      { currentName: "src/AppTest.java", newName: `src/test/java/${directoryGroupId}app/AppTest.java` },
     ];
 
     files.forEach(el => {
