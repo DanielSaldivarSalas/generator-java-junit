@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId><%= groupId %></groupId>
-  <artifactId>my-app</artifactId>
+  <artifactId><%= projectName %></artifactId>
   <version>0.0.1-SNAPSHOT</version>
 
   <name><%= projectName %></name>

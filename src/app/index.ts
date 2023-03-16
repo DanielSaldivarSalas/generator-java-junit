@@ -68,7 +68,7 @@ export default class extends BaseGenerator {
     const templates: TemplateEntity[] = [
       {
         currentName: "pom.xml",
-        newName: `${this.answers.projectName}/pom.xml`,
+        newName: "pom.xml",
         data: {
           groupId: this.answers.groupId,
           projectName: this.answers.projectName
