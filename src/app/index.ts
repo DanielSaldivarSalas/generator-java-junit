@@ -7,6 +7,7 @@ import {
 
 interface PromptAnswers {
   projectName: string;
+  groupId: string;
 }
 
 export default class extends BaseGenerator {
@@ -30,6 +31,14 @@ export default class extends BaseGenerator {
         store: false
       },
 
+      {
+        type: "input",
+        name: "groupId",
+        message: "What's the groupdId? ",
+        store: false
+      },
+
+
     ]);
 
     this.answers = answers;
@@ -38,11 +47,15 @@ export default class extends BaseGenerator {
   }
 
   writing() {
+
+    const directoryGroupId = this.answers.groupId.split(".").join("/")
+
     const files: FileSystemEntity[] = [
       { currentName: "pom.xml" },
       { currentName: "_gitignore", newName: ".gitignore" },
-      { currentName: "src/main/java/com/danielsaldivar/app/App.java" },
-      { currentName: "src/test/java/com/danielsaldivar/app/AppTest.java" }
+
+      { currentName: "src/App.java", newName: `src/main/java/${directoryGroupId}/app/App.java` },
+      { currentName: "src/AppTest.java", newName: `src/test/java/${directoryGroupId}app/AppTest.java` },
     ];
 
     files.forEach(el => {
